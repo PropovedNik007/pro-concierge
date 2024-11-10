@@ -2,7 +2,7 @@
 <script>
 	import { login } from '$lib/auth';
 	import { goto } from '$app/navigation';
-	import { base } from '$app/paths';
+	// import { base } from '$app/paths';
 
 	let email = '';
 	let password = '';
@@ -12,10 +12,10 @@
 			const { user, role } = await login(email, password);
 			if (role === 'admin') {
 				console.log('role', role);
-				goto(`${base}/admin`);
+				goto(`/admin`);
 			} else {
 				console.log('role', role);
-				goto(`${base}/client`);
+				goto(`/client`);
 			}
 		} catch (error) {
 			alert('Login failed');

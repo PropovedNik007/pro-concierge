@@ -2,8 +2,8 @@
 <script>
     import { signUp } from '$lib/auth';  // Use signUp instead of login
     import { goto } from '$app/navigation';
-    import { base } from '$app/paths';
-    
+    // import { base } from '$app/paths';
+
     let email = '';
     let password = '';
     let role = 'client'; // Default role for signups
@@ -13,7 +13,7 @@
             await signUp(email, password, role);
             alert('Signup successful! Check your email to confirm.');
             // goto('/'); // Redirect to login page after signup
-            goto(`${base}/client`); 
+            goto(`/client`); 
         } catch (error) {
             alert('Signup failed');
             console.error(error);
