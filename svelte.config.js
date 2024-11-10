@@ -1,13 +1,61 @@
-import adapter from '@sveltejs/adapter-static';
+// // import adapter from '@sveltejs/adapter-auto';
+// import adapter from '@sveltejs/adapter-static';
 
+// /** @type {import('@sveltejs/kit').Config} */
+// const config = {
+// 	kit: {
+// 		// adapter-auto only supports some environments, see https://svelte.dev/docs/kit/adapter-auto for a list.
+// 		// If your environment is not supported, or you settled on a specific environment, switch out the adapter.
+// 		// See https://svelte.dev/docs/kit/adapters for more information about adapters.
+// 		adapter: adapter()
+// 	}
+// };
+
+// export default config;
+
+
+import adapter from '@sveltejs/adapter-static';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+
+// const base = process.env.BASE_PATH ?? '/arterra';
+const dev = process.argv.includes('dev');
+
+/** @type {import('@sveltejs/kit').Config} */
 const config = {
-  kit: {
-    adapter: adapter(),
-    paths: {
-      // Set base path to your repository name
-      base: process.env.NODE_ENV === 'production' ? '/pro-concierge' : '',
-    },
-  },
+	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
+	// for more information about preprocessors
+	preprocess: vitePreprocess(),
+
+	kit: {
+		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
+		// If your environment is not supported, or you settled on a specific environment, switch out the adapter.
+		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
+		adapter: adapter({
+			// fallback: '404.html'
+			pages: 'build',
+			assets: 'build',
+			fallback: '404.html'
+		}),
+		paths: {
+			// base,
+			// base: process.argv.includes('dev') ? '' : process.env.BASE_PATH
+			base: dev ? '' : process.env.BASE_PATH ?? '/pro-concierge'
+			// base: process.env.BASE_PATH ?? '/arterra'
+        },
+		// prerender: {
+		// 	default: true
+		// }
+		// 	handleHttpError: ({ status, path, referrer }) => {
+		// 		if (status === 404) {
+		// 			console.warn(`Path not found: ${path}, referrer: ${referrer}`);
+		// 			return {
+		// 				ignore: true // Ignore 404s during prerendering
+		// 			};
+		// 		}
+		// 	}
+		// }
+	}
 };
 
 export default config;
+

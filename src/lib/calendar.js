@@ -1,4 +1,3 @@
-// src/lib/calendar.js
 import ical from 'ical.js';
 
 export async function fetchCalendarData(url) {

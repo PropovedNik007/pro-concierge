@@ -4,6 +4,8 @@
 	import { supabase } from '$lib/auth';
 	import { Navbar, NavBrand, Alert } from 'flowbite-svelte';
 
+	import { base } from '$app/paths';
+
 	let todaysTasks = [];
 	let errorMsg = '';
 
@@ -67,7 +69,7 @@
 </script>
 
 <Navbar class="border-b px-4 py-2 shadow-sm">
-	<NavBrand href="/" class="text-xl font-semibold dark:text-blue-500">
+	<NavBrand href="{base}/" class="text-xl font-semibold dark:text-blue-500">
 		Concierge Admin Dashboard
 	</NavBrand>
 </Navbar>
