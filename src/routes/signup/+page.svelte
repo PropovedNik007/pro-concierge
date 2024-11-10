@@ -15,7 +15,7 @@
             // goto('/'); // Redirect to login page after signup
             goto(`/client`); 
         } catch (error) {
-            alert('Signup failed');
+            alert('Signup failed, ' + error.message);
             console.error(error);
         }
     }
@@ -26,6 +26,6 @@
 <input type="password" bind:value={password} placeholder="Password" />
 <select bind:value={role}>
     <option value="client">Client</option>
-    <option value="admin">Admin</option>
+    <option value="admin">Hotel</option>
 </select>
 <button on:click={handleSignUp}>Sign Up</button>

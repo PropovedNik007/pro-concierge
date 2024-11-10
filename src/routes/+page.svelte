@@ -62,6 +62,7 @@
 			<input type="email" bind:value={email} placeholder="Email" class="input" />
 			<input type="password" bind:value={password} placeholder="Password" class="input" />
 			<button on:click={handleLogin} class="btn">Login</button>
+			<button on:click={() => goto('/signup')} class="btn">Sign Up</button>
 		</div>
 	</div>
 </div>
