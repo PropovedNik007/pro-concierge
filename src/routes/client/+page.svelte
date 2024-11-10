@@ -353,17 +353,17 @@
 	}
 </script>
 
-<Navbar class="start-0 top-0 z-20 w-full justify-center space-x-4 border-b px-5 py-3.5 sm:px-4 flex flex-col">
+<Navbar class="start-0 top-0 z-20 w-full justify-center space-x-4 border-b px-5 py-3.5 sm:px-4 flex flex-row">
 	<NavBrand href="/">
 		<span class="self-center whitespace-nowrap text-xl font-semibold dark:text-blue-500"
 			>Concierge</span
 		>
 	</NavBrand>
 
-	<input type="text" bind:value={calendarUrl} placeholder="Enter iCal URL" />
-	<button on:click={handleFetchCalendar}>Load Calendar from URL</button>
-	OR
-	<input type="file" accept=".ics" on:change={handleFileUpload} />
+	<input class='nav-item' type="text" bind:value={calendarUrl} placeholder="Enter iCal URL" />
+	<button class='nav-item' on:click={handleFetchCalendar}>Load Calendar from URL</button>
+	<p class='nav-or'> OR</p>
+	<input class='nav-item' type="file" accept=".ics" on:change={handleFileUpload} />
 	<!-- </NavUl> -->
 </Navbar>
 
@@ -454,6 +454,17 @@
 </div>
 
 <style>
+	.nav-item {
+		padding: 0.5rem;
+		border-radius: 4px;
+		border: 1px solid #ccc;
+		margin-left: 0.5rem;
+	}
+
+	.nav-or{
+		/* padding: 0.5rem; */
+		margin-left: 0.5rem;
+	}
 	.event-item {
 		/* background-color: #b8d3f2; */
 		border-radius: 4px;
